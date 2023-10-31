@@ -1,5 +1,5 @@
 """
-Lumache - Python library for cooks and food lovers.
+SolarKAT - A Solar Imaging pipeline for Interference mitigation in MeerKAt.
 """
 
 __version__ = "0.1.0"
