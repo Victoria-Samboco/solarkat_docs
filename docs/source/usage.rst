@@ -29,7 +29,6 @@ Recipe
 Is a YAML file Which contains the SolarkATs workflow and in which sequence  of steps the interference mitigation process will be executed.  Each of the steps ivolkes a cab to execute a task. Each od the steps have parameters that are defined in the cab file.
 
 
-
 SolarKAT Steps
 --------------
 SolarKAT is composed by several steps which are executed in order:
@@ -37,13 +36,16 @@ SolarKAT is composed by several steps which are executed in order:
 Input MS
 ^^^^^^^^
 Calibration
+^^^^^^^^^^^
 ..MS: 
 .."""
-^^^^^^^^^^^
-Backup model
+
+Backup_model
 ^^^^^^^^^^^^
-Scan numbers extraction
+
+Scan_numbers_extraction
 ^^^^^^^^^^^^^^^^^^^^^^^
+
 load_scan_numbers
 ^^^^^^^^^^^^^^^^^
 
@@ -60,7 +62,6 @@ change_phase_centre_to_sun
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 image_sun
-
 ^^^^^^^^^
 create_ds9_regions
 ^^^^^^^^^^^^^^^^^^
@@ -97,8 +98,10 @@ save-flags-3
 
 cal_and_peel_sol
 ^^^^^^^^^^^^^^^^
+
 save-flags-4
 ^^^^^^^^^^^^
+
 image
 ^^^^^
 .. Params:
@@ -122,4 +125,12 @@ image
 .. >>> import lumache
 .. >>> lumache.get_random_ingredients()
 .. ['shells', 'gorgonzola', 'parsley']
+
+
+.. Commit Changes
+.. After editing the files, commit the changes using Git. In the terminal
+.. git add README.rst index.rst path/to/api_file.rst
+.. git commit -m "Update documentation"
+.. git push origin main 
+.. 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
 
