@@ -14,7 +14,7 @@
 
 SolarKAT Components
 -------------------
-SolarKAT is deployed in 'Stimela <https://stimela.readthedocs.io/en/latest/fundamentals/basics.html>'_, a workflow management framework. SolarKAT is composed by three main components:  
+SolarKAT is deployed in Stimela 'https://stimela.readthedocs.io/en/latest/fundamentals/basics.html', a workflow management framework. SolarKAT is composed by three main components:  
 
 Python file
 ^^^^^^^^^^^
