@@ -1,4 +1,4 @@
-Welcome to SolarKAT’s documentation!
+Welcome to SolarKAT documentation!
 ===================================
 
 .. .. image:: sftp://samboco@garfunkel.ru.ac.za/home/samboco/solarkat_docs/docs/source/solarlogo.png
