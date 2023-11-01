@@ -1,20 +1,32 @@
-Usage
-=====
+.. Usage
+.. =====
 
-.. _installation:
+.. .. _installation:
 
 .. Installation
 ..------------
 
-..To use SolarKAT, first git clone it using:
+.. To use SolarKAT, first git clone it using:
 
-.. code-block:: console
+.. .. code-block:: console
 
 .. $ git clone https://github.com/Victoria-Samboco/solarkat_docs.git
 
 SolarKAT Components
 -------------------
-SolarKAT is composed by three main components:  a python file where all the funtions are defined; a cab definition file (YAML) where all the inputs and outputs of the pipeline steps are defined; and a recipe, which contains the steps in which sequence the interference mitigation process will be executed. 
+SolarKAT is deployed in 'Stimela <https://stimela.readthedocs.io/en/latest/fundamentals/basics.html>'_, a workflow management framework. SolarKAT is composed by three main components:  
+
+Python file
+^^^^^^^^^^^
+Where all the funtions are defined.
+
+Cab
+^^^
+A YAML document that tells stimela how to involke a certain SolarKAT task. A cab is Where all the inputs and outputs of the pipeline steps are defined. The cabs involkes python functions defined in the Python file as well as CASA tasks commands. 
+
+Recipe
+^^^^^^
+Is a YAML file Which contains the SolarkATs workflow and in which sequence  of steps the interference mitigation process will be executed.  Each of the steps ivolkes a cab to execute a task. Each od the steps have parameters that are defined in the cab file.
 
 
 
@@ -22,53 +34,78 @@ SolarKAT Steps
 --------------
 SolarKAT is composed by several steps which are executed in order:
 
-### Input MS
+Input MS
+^^^^^^^^
+Calibration
+..MS: 
+.."""
+^^^^^^^^^^^
+Backup model
+^^^^^^^^^^^^
+Scan numbers extraction
+^^^^^^^^^^^^^^^^^^^^^^^
+load_scan_numbers
+^^^^^^^^^^^^^^^^^
 
-### Calibration
+split_ms_by_scan
+^^^^^^^^^^^^^^^^
 
-### Backup model
+get_perscan_old_coords
+^^^^^^^^^^^^^^^^^^^^^^
 
-### Scan numbers extraction
+get_sun_coordinates
+^^^^^^^^^^^^^^^^^^^
 
-### load_scan_numbers
+change_phase_centre_to_sun
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-### split_ms_by_scan
+image_sun
 
-### get_perscan_old_coords
+^^^^^^^^^
+create_ds9_regions
+^^^^^^^^^^^^^^^^^^
 
-### get_sun_coordinates
+make_mask
+^^^^^^^^^
 
-### shift_to_sun
+deconvolve_sun
+^^^^^^^^^^^^^^
 
-### image_sun
+predict_sun_model
+^^^^^^^^^^^^^^^^^
 
-### create_ds9_regions
+quality_control_imaging
+^^^^^^^^^^^^^^^^^^^^^^^
 
-### make_mask
+restore_phase_centre
+^^^^^^^^^^^^^^^^^^^^
 
-### deconvolve_sun
+add_model_data_columnn
+^^^^^^^^^^^^^^^^^^^^^^
 
-### predict_sun_model
+data_storage
+^^^^^^^^^^^^
 
-### quality_control_imaging
+subtract_sun
+^^^^^^^^^^^^
 
-### rephase
+image-corrected-data
+^^^^^^^^^^^^^^^^^^^^
 
-### add_model_data_columnn
+save-flags-3
+^^^^^^^^^^^^
 
-### data_storage
+cal_and_peel_sol
+^^^^^^^^^^^^^^^^
+save-flags-4
+^^^^^^^^^^^^
+image
+^^^^^
+.. Params:
 
-### subtract_sun
+.. MS: 
+.. """
 
-### image-corrected-data
-
-### save-flags-3
-
-### cal_and_peel_sol
-
-### save-flags-4
-
-### image
 
 
 
