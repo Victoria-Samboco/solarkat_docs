@@ -31,5 +31,11 @@ templates_path = ['_templates']
 
 html_theme = 'sphinx_rtd_theme'
 
+# Add this line to set the theme options
+html_theme_options = {
+   'style_nav_header_background': '#FFA500', # Orange
+   'logo_link': 'https://yourwebsite.com',
+}
+
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
