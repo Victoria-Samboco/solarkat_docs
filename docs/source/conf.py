@@ -29,13 +29,29 @@ templates_path = ['_templates']
 
 # -- Options for HTML output
 
-html_theme = 'sphinx_rtd_theme'
+.. html_theme = 'sphinx_rtd_theme'
+
+html_theme = 'agogo'
+
+html_theme_options = {
+    'bodyfont': 'Arial, sans-serif',
+    'headerfont': 'Georgia, serif',
+    'bgcolor': 'white',
+    'headerbg': '#D3D3D3',
+    'footerbg': '#D3D3D3',
+    'linkcolor': 'blue',
+    'headercolor1': 'darkblue',
+    'headercolor2': 'blue',
+    'headerlinkcolor': 'white',
+    'textalign': 'left',
+}
+
 
 # Add this line to set the theme options
-html_theme_options = {
-   'style_nav_header_background': '#FFA500', # Orange
-   'logo_link': 'https://yourwebsite.com',
-}
+..html_theme_options = {
+..   'style_nav_header_background': '#FFA500', # Orange
+..   'logo_link': 'https://yourwebsite.com',
+..}
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
