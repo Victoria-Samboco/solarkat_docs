@@ -31,7 +31,7 @@ Is a YAML file Which contains the SolarkATs workflow and in which sequence  of s
 
 SolarKAT Steps
 --------------
-SolarKAT is composed by several steps which are executed in order:
+SolarKAT is composed by several steps which are executed in the following order:
 
 Input MS
 ^^^^^^^^
@@ -102,8 +102,6 @@ save-flags-4
 
 image
 ^^^^^
-
-
 
 
 .. autofunction:: lumache.get_random_ingredients
