@@ -33,7 +33,7 @@ html_theme = 'sphinx_rtd_theme'
 
 # Add this line to set the theme options
 html_theme_options = {
-   'style_nav_header_background': '#00008B ',  #darkblue  Gold
+   'style_nav_header_background': '#00008B ',  #dark blue
    'logo_link': 'https://solarkat-docs.readthedocs.io/en/latest/#',
 }
 
