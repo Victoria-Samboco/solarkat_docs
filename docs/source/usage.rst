@@ -4,7 +4,7 @@
 .. .. _installation:
 
 .. Installation
-..------------
+..- -----------
 
 .. To use SolarKAT, first git clone it using:
 
@@ -37,8 +37,6 @@ Input MS
 ^^^^^^^^
 Calibration
 ^^^^^^^^^^^
-..MS: 
-.."""
 
 Backup_model
 ^^^^^^^^^^^^
@@ -104,10 +102,6 @@ save-flags-4
 
 image
 ^^^^^
-.. Params:
-
-.. MS: 
-.. """
 
 
 
