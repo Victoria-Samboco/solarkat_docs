@@ -1,9 +1,7 @@
-Template for the Read the Docs tutorial
+SolarKAT
 =======================================
+ A Solar Imaging Pipeline for Solar Interference Mitigation in MeerKAT.
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
+Read the documentation here:
 
-Read the tutorial here:
-
-https://docs.readthedocs.io/en/stable/tutorial/
+ https://solarkat-docs.readthedocs.io/en/latest/index.html
