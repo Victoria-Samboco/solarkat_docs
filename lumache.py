@@ -1,5 +1,5 @@
 """
-SolarKAT - A Solar Imaging pipeline for Interference mitigation in MeerKAt.
+SolarKAT - A Solar Imaging pipeline for solar Interference mitigation in MeerKAt.
 """
 
 __version__ = "0.1.0"
