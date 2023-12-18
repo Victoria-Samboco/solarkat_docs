@@ -1,16 +1,16 @@
 .. Usage
 .. =====
 
-.. .. _installation:
+.. _installation:
 
-.. Installation
-.. -----------
+ Installation
+ -----------
 
-.. To use SolarKAT, first git clone it using:
+To use SolarKAT, first git clone it using:
 
-.. .. code-block:: console
+.. code-block:: console
 
-.. $ git clone https://github.com/Victoria-Samboco/solarkat_docs.git
+$ git clone https://github.com/Victoria-Samboco/solarkat_docs.git
 
 SolarKAT Components
 -------------------
@@ -43,7 +43,6 @@ imaging
 ^^^^^^^
 This step composes the first imaging cycles, which is performed before self-calibration. The solarkAT envolves two (2) imaging steps before self-cal. The imaging cycles are separated by a masking step. More information about the WSClean parameters can be found in the `WSClean manual <https://wsclean.readthedocs.io/en/latest/>`_ .
 
- Parameters:
 
 - `column`
 - `niter`
@@ -76,6 +75,7 @@ self-calibration (required)
 backup_model_data (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This step backups the MODEL_DATA of the original MS before processing. This is done just in case we want to compare the model of the main field before and after removing the inpluence of the Sun in the data. What this step does is basicaly renaming the MODEL_DATA column.
+
 - `ms`:
 - `oldname`: MODEL_DATA
 - `newname`: MODEL_DATA_ORIGINAL
@@ -109,6 +109,7 @@ get_perscan_old_coords (required)
 - `ms_list`
 - `outfile` : Txt file containing the original coordinates (RA/DEC)
 
+
 get_sun_coordinates (required)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - `ms`
@@ -125,6 +126,7 @@ change_phase_centre_to_sun (required)
 image_sun (required)
 ^^^^^^^^^^^^^^^^^^^^
 Dirty image of the Sun for each scan.
+
 - `ms`
 - `ms_list`
 - `niter`
@@ -143,9 +145,11 @@ create_ds9_regions (required)
 - `input_file` : The file containing the Sun coordinates
 - `output_dir` : Where the regions are stored
 
+
 make_mask (required)
 ^^^^^^^^^^^^^^^^^^^^^
 This step includes auxiliar steps (load_scan_numbers and making_masks) as a input for the main step (make_mask)
+
 - `scan_list` : List of scan numbers
 - `scans_file` : File containing the scan numbers
 - `region_dir` : Path to the DS9 regions
@@ -153,6 +157,7 @@ This step includes auxiliar steps (load_scan_numbers and making_masks) as a inpu
 - `threshold` : Threshold
 - `merge` : Full path to each region file acoording to the scan number
 - `mask` : Output mask according to the scan number
+
 
 deconvolve_sun (required)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -188,6 +193,7 @@ Predicting the Sun models.
 - `padding`
 - `temp_dir`
 - `prefix`
+
 See more details of the steps in the `WSClean manual <https://wsclean.readthedocs.io/en/latest/>`_ .
 
 
@@ -235,6 +241,7 @@ Example: "commands: =LIST("set", "CORRECTED_DATA_SUN=CORRECTED_DATA-MODEL_DATA_S
 image-corrected-data (required)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This steps updates the main field MODEL_DATA after Sun subtraction. This is the refined model used in the "cal_and_peel_sol" step.
+
 - `ms` 
 - `padding`
 - `niter`
