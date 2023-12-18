@@ -6,7 +6,7 @@ Welcome to SolarKAT documentation!
 ..   :align: center
 
 
-**SolarKAT** is a Python-based pipeline designed to mitigate solar radio interference in MeerKAT data. It employs solar tracking, solar subtraction, and peeling techniques to enhance the quality of data by reducing solar radio interference while preserving flux measurements in the observed field.
+**SolarKAT** is a Python-based pipeline designed to mitigate solar radio interference in MeerKAT data. It employs solar tracking, solar subtraction, and peeling techniques to enhance the quality of data by reducing solar radio interference while preserving flux measurements in the observed field. SolarKAT 
 
 .. Check out the :doc:`usage` section for further information, including
 .. how to :ref:`installation` the project.
@@ -26,4 +26,5 @@ Contents
    installation
    usage
    pipeline Steps
+   softwares
    api
