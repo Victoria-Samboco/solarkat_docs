@@ -115,12 +115,14 @@ get_perscan_old_coords (required)
 
 get_sun_coordinates (required)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 - `ms`
 - `outfile` : Text file containing the Sun coordinates (RA/DEC)
 
 
 change_phase_centre_to_sun (required)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 - `ms_list` : list of scans to be processed
 - `coords` : Sun coordinates
 - `splitted_ms_dir` : The directory where the scans are stored
@@ -165,9 +167,10 @@ This step includes auxiliar steps (load_scan_numbers and making_masks) as a inpu
 deconvolve_sun (required)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 Deconvolve the Sun for each scan MS.
-- `ms`
-- `mask_list`
-- `ms_list`
+
+- `ms` 
+- `mask_list` 
+- `ms_list` 
 - `size`
 - `niter`
 - `multiscale`
@@ -179,7 +182,7 @@ Deconvolve the Sun for each scan MS.
 - `column`
 - `temp_dir`
 - `prefix`
-- `fits-mask`
+- `fits-mask` 
 
 Multiscale is important for this task as the Sun is an extendend source. See more details of the parameters here `WSClean manual <https://wsclean.readthedocs.io/en/latest/>`_ .
 
@@ -221,7 +224,8 @@ This step is generaly to check if the rephasing step was successfull.
 
 add_model_data_columnn (required)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Add columns to the original MS
+Add columns to the original MS.
+
 - `ms`
 - `col_names` : Columns to add in the single (original) MS (MODEL_DATA_SUN, CORRECTED_DATA_SUN)
 - `like-col` : Reference column
@@ -236,7 +240,8 @@ data_storage (required)
 
 subtract_sun (required)
 ^^^^^^^^^^^^^^^^^^^^^^^
-Subtract the Sun (MODEL_DATA_SUN)
+Subtract the Sun (MODEL_DATA_SUN) from the afected visibilities (CORRECTED_DATA) for each scan.
+
 - `ms`
 - `commands` : Command to exectute the subtraction 
 Example: "commands: =LIST("set", "CORRECTED_DATA_SUN=CORRECTED_DATA-MODEL_DATA_SUN")"
@@ -258,6 +263,7 @@ This steps updates the main field MODEL_DATA after Sun subtraction. This is the 
 save-flags-3 (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^
 Manage flags before peeling
+
 - `ms`
 - `name`
 - `mode`: Save/restore
