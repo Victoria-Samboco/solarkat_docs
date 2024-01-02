@@ -21,6 +21,7 @@ The **SolarKAT** is a Python-based pipeline designed for MeerKAT observations af
   :align: center
   :alt: SolarKAT flowchart
 
+\
 
 Audience
 --------
