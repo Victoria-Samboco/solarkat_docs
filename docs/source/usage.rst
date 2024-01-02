@@ -85,8 +85,8 @@ This step backups the MODEL_DATA of the original MS before processing. This is d
 
 scan_numbers_extraction (required)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-- `ms`:
-- `outfile`: A txt file containing the scans numbers.
+- `ms`
+- `outfile`: A text file containing the scans numbers.
 
 
 load_scan_numbers (required)
@@ -191,6 +191,7 @@ Multiscale is important for this task as the Sun is an extendend source. See mor
 predict_sun_model (required)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Predicting the Sun models.
+
 - `ms`
 - `ms_list`
 - `scans`
@@ -208,6 +209,7 @@ See more details of the steps in the `WSClean manual <https://wsclean.readthedoc
 quality_control_imaging1 (required)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This step is generaly to check the MODEL_DATA column after prediction
+
 - `ms_list`
 
 restore_phase_centre (required)
@@ -220,6 +222,7 @@ restore_phase_centre (required)
 quality_control_imaging2 (required)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This step is generaly to check if the rephasing step was successfull.
+
 - `ms_list`
 
 
