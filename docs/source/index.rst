@@ -16,6 +16,11 @@ The **SolarKAT** is a Python-based pipeline designed for MeerKAT observations af
 .. how to :ref:`installation` the project.
 
 
+.. image:: docs/source/solarkat_Diagra.png
+  :width: 600px
+  :alt: SolarKAT flowchart
+
+
 Audience
 --------
 This documentation is intended for radio astronomers and data scientists interested in utilising the pipeline to recover the affected visibilities and improve the data image quality for future analysis. This is also a valuable tool for space weather scientists intended to utilise the pipeline to produce solar images for weather forecasting.
@@ -23,7 +28,7 @@ This documentation is intended for radio astronomers and data scientists interes
 .. note::
 
    This project is under active development.
-   
+
 
 Contents
 --------
