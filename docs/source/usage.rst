@@ -1,16 +1,18 @@
 .. Usage
 .. =====
 
-.. _installation:
+.. .. _installation:
 
- Installation
- -----------
+.. Installation
+.. -----------
 
-To use SolarKAT, first git clone it using:
+.. To use SolarKAT, first git clone it using:
 
 .. code-block:: console
 
-$ git clone https://github.com/Victoria-Samboco/solarkat_docs.git
+.. $ git clone https://github.com/ratt-ru/solarkat.git
+
+
 
 SolarKAT Components
 -------------------
@@ -74,7 +76,7 @@ self-calibration (required)
 
 backup_model_data (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This step backups the MODEL_DATA of the original MS before processing. This is done just in case we want to compare the model of the main field before and after removing the inpluence of the Sun in the data. What this step does is basicaly renaming the MODEL_DATA column.
+This step backups the MODEL_DATA of the original MS before processing. This is done just in case we want to compare the model of the main field before and after removing the inpluence of the Sun in the data. What this step does is basicaly renaming the MODEL_DATA column. You can use this step if you want to preserve the initial model_data of the original field for future use (for example for conparison with the improved model).
 
 - `ms`:
 - `oldname`: MODEL_DATA
@@ -89,8 +91,9 @@ scan_numbers_extraction (required)
 
 load_scan_numbers (required)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Loading the scan numbers for future use.  
-- `scans_file`: Calling the outfile generated in the previous step.
+Loading the scan numbers for future use.
+
+-`scans_file` : Calling the outfile generated in the previous step.
 
 split_ms_by_scan (required)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -113,7 +116,7 @@ get_perscan_old_coords (required)
 get_sun_coordinates (required)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - `ms`
-- `outfile` : Txt file containing the Sun coordinates (RA/DEC)
+- `outfile` : Text file containing the Sun coordinates (RA/DEC)
 
 
 change_phase_centre_to_sun (required)
