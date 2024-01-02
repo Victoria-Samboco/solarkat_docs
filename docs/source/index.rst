@@ -41,6 +41,6 @@ Contents
    overview
    installation
    usage
-   pipeline Steps
+   solarkat_steps
    softwares
    api
