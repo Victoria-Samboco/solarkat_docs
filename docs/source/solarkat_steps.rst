@@ -65,7 +65,7 @@ Loading the scan numbers for future use.
 -`scans_file` : Calling the outfile generated in the previous step.
 
 split_ms_by_scan (required)
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Split the MS using the scan_numbers loaded previously. PS: For this step to work you have to ensure to run simultaneously with the "load_scan_numbers" step. This is done in a loop over the scan list.
 
 - `ms`
@@ -75,11 +75,12 @@ Split the MS using the scan_numbers loaded previously. PS: For this step to work
 - `scan`: represents each scan in the scan_list
 - `outputvis` : The output scans named acording to the scan numbers.
 
+The output of this step are small chunks of data (Measuremment Sets) called scans. 
 
 get_perscan_old_coords (required)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - `ms_list`
-- `outfile` : Txt file containing the original coordinates (RA/DEC)
+- `outfile` : Text file containing the original coordinates (RA/DEC)
 
 
 get_sun_coordinates (required)
@@ -96,6 +97,7 @@ change_phase_centre_to_sun (required)
 - `coords` : Sun coordinates
 - `splitted_ms_dir` : The directory where the scans are stored
 
+In this step the pipeline access the splited_ms_dir directory and the path to the sun coordinates file and use them to change the phase centre of each scan in the ms_list from the main field to teh Sun field.
 
 image_sun (required)
 ^^^^^^^^^^^^^^^^^^^^
@@ -111,6 +113,7 @@ Dirty image of the Sun for each scan.
 - `no-update-model-required`
 - `prefix`
 
+The output of this step are images of the solar disk.
 
 
 create_ds9_regions (required)
