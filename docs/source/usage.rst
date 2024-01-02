@@ -166,6 +166,7 @@ This step includes auxiliar steps (load_scan_numbers and making_masks) as a inpu
 
 deconvolve_sun (required)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Deconvolve the Sun for each scan MS.
 
 - `ms` 
