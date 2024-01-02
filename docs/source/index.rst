@@ -16,7 +16,7 @@ The **SolarKAT** is a Python-based pipeline designed for MeerKAT observations af
 .. how to :ref:`installation` the project.
 
 
-.. image:: docs/source/solarkat_Diagra.png
+.. image:: solarkat_Diagra.png
   :width: 600px
   :alt: SolarKAT flowchart
 
