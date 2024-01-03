@@ -8,7 +8,7 @@ Welcome to SolarKAT documentation!
 Overview
 --------
 
-The **SolarKAT** is a Python-based pipeline designed for MeerKAT observations affected by the Sun. It addresses the challenge of solar radio interference in the observed data. The pipeline employs solar tracking, subtraction, and peeling techniques to enhance data quality by significantly reducing solar radio interference. This is achieved while preserving crucial flux measurements in the observed field. The versatility of the pipeline makes it applicable not only to general radio astronomy observations but also to solar radio astronomy. Additionally, the generated solar images can be utilized for weather forecasting purposes. 
+The **SolarKAT** is a Python-based pipeline designed for MeerKAT observations affected by the Sun. It addresses the challenge of solar radio interference in the observed data. The pipeline employs solar tracking, subtraction, and peeling techniques to enhance data quality by significantly reducing solar radio interference. This is achieved while preserving the flux measurements in the main field. The versatility of the pipeline makes it applicable not only to general radio astronomy observations but also to solar radio astronomy. Additionally, the generated solar images can be utilized for weather forecasting purposes. 
 
 The SolarKAT flowchart is ilustrated below:
  
