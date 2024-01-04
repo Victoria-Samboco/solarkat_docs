@@ -228,7 +228,7 @@ Add columns to the original MS.
 
 20. subtract_sun (required)
 
-Subtract the Sun (_MODEL_DATA_SUN_) from the afected visibilities (_CORRECTED_DATA_) for each scan.
+Subtract the Sun (_ MODEL_DATA_SUN _) from the afected visibilities (_CORRECTED_DATA_) for each scan.
 
 - `ms`
 - `commands` : Command to exectute the subtraction 
@@ -305,7 +305,7 @@ Calibration and peeling of the Sun
 
 24. save-flags-4 (optional)
 
-Manage flags after peeling (same as the step _ ave-flags-3_ )
+Manage flags after peeling (same as the step _ save-flags-3_ )
 
 25. image (required)
 
