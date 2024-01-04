@@ -254,7 +254,9 @@ Subtract the Sun (*MODEL_DATA_SUN*) from the afected visibilities (*CORRECTED_DA
 
 - `ms`
 - `commands` : Command to exectute the subtraction 
+
 Example:
+
 .. code-block:: console
 
     commands: =LIST("set", "CORRECTED_DATA_SUN=CORRECTED_DATA-MODEL_DATA_SUN")
