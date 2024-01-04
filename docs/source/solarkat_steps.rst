@@ -5,6 +5,7 @@ SolarKAT is composed of several steps, which are executed in the order below. Th
 
 
 1. Input data
+^^^^^^^^^^^^^
 
 SolarKAT ingests 1GC calibrated data in Measurement Set format from the MeerKAT telescope.
 
