@@ -4,14 +4,14 @@ SolarKAT Steps
 SolarKAT is composed of several steps, which are executed in the order below. This section includes the description and the respective parameters involved in each step.
 
 
-Input data
-^^^^^^^^^^
+1. Input data
+
 SolarKAT ingests 1GC calibrated data in Measurement Set format from the MeerKAT telescope.
 
 - ms: The Measurement Set to be processed (MS)
 
-imaging
-^^^^^^^
+2. imaging
+
 This step composes the first imaging cycles, which is performed before self-calibration. The solarkAT envolves two (2) imaging steps before self-cal. The imaging cycles are separated by a masking step. More information about the WSClean parameters can be found in the `WSClean manual <https://wsclean.readthedocs.io/en/latest/>`_ .
 
 
@@ -26,8 +26,8 @@ This step composes the first imaging cycles, which is performed before self-cali
 - `wgridder-accuracy`
 
 
-self-calibration (required)
-^^^^^^^^^^^^^^^^
+3. self-calibration (required)
+
 - `input_ms.path`: '{recipe.ms}'
 - `solver.terms`: [K]
 - `K.type: phase`
@@ -43,29 +43,29 @@ self-calibration (required)
 - `output.columns`: [CORRECTED_DATA]
 
 
-backup_model_data (optional)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This step backups the MODEL_DATA of the original MS before processing. This is done just in case we want to compare the model of the main field before and after removing the inpluence of the Sun in the data. What this step does is basicaly renaming the MODEL_DATA column. You can use this step if you want to preserve the initial model_data of the original field for future use (for example for conparison with the improved model).
+4. backup_model_data (optional)
+
+This step backups the _MODEL_DATA_ of the original MS before processing. This is done just in case we want to compare the model of the main field before and after removing the inpluence of the Sun in the data. What this step does is basicaly renaming the _MODEL_DATA_ column. You can use this step if you want to preserve the initial model_data of the original field for future use (for example for conparison with the improved model).
 
 - `ms`:
 - `oldname`: MODEL_DATA
 - `newname`: MODEL_DATA_ORIGINAL
 
 
-scan_numbers_extraction (required)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5. scan_numbers_extraction (required)
+
 - `ms`
 - `outfile`: A text file containing the scans numbers.
 
 
-load_scan_numbers (required)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5. load_scan_numbers (required)
+
 Loading the scan numbers for future use.
 
--`scans_file` : Calling the outfile generated in the previous step.
+- `scans_file` : Call the output file generated in the previous step.
 
-split_ms_by_scan (required)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6. split_ms_by_scan (required)
+
 Split the MS using the scan_numbers loaded previously. PS: For this step to work you have to ensure to run simultaneously with the "load_scan_numbers" step. This is done in a loop over the scan list.
 
 - `ms`
@@ -75,32 +75,42 @@ Split the MS using the scan_numbers loaded previously. PS: For this step to work
 - `scan`: represents each scan in the scan_list
 - `outputvis` : The output scans named acording to the scan numbers.
 
-The output of this step are small chunks of data (Measuremment Sets) called scans. 
+The output of this step are small chunks of data in MS format. This MS are named according to the scan numbers extracted from the MS. The pipeline make use of the substitutions and formulas features ofered by stimela. An example of the use is the "outputvis" parameter:
 
-get_perscan_old_coords (required)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: console
+
+    outputvis: ="{root.dir_out}" + "/" + "{root.perscan_dir_out}" + "/" + STRIPEXT(BASENAME(recipe.ms)) + "_scan_{recipe.scan}.ms"
+
+
+This allows the pipeline to name the output scans according the scan numbers in a combination of substituitions and formulas. Now lets breackdown what is happening here:
+
+Parameter strings starting with _=_ represents formulas. in this case, the outputis parameter is a formula that 
+
+
+7. get_perscan_old_coords (required)
+
 - `ms_list`
 - `outfile` : Text file containing the original coordinates (RA/DEC)
 
 
-get_sun_coordinates (required)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+8. get_sun_coordinates (required)
+
 
 - `ms`
 - `outfile` : Text file containing the Sun coordinates (RA/DEC)
 
 
-change_phase_centre_to_sun (required)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+9. change_phase_centre_to_sun (required)
+
 
 - `ms_list` : list of scans to be processed
 - `coords` : Sun coordinates
 - `splitted_ms_dir` : The directory where the scans are stored
 
-In this step the pipeline access the splited_ms_dir directory and the path to the sun coordinates file and use them to change the phase centre of each scan in the ms_list from the main field to teh Sun field.
+In this step the pipeline access the _splited_ms_dir_ directory and the path to the sun coordinates file and use them to change the phase centre of each scan in the _ms_list_ from the main field to teh Sun field.
 
-image_sun (required)
-^^^^^^^^^^^^^^^^^^^^
+10. image_sun (required)
+
 Dirty image of the Sun for each scan.
 
 - `ms`
@@ -116,16 +126,16 @@ Dirty image of the Sun for each scan.
 The output of this step are images of the solar disk.
 
 
-create_ds9_regions (required)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+11. create_ds9_regions (required)
+
 - `ms`
 - `input_file` : The file containing the Sun coordinates
 - `output_dir` : Where the regions are stored
 
 
-make_mask (required)
-^^^^^^^^^^^^^^^^^^^^^
-This step includes auxiliar steps (load_scan_numbers and making_masks) as a input for the main step (make_mask)
+122. make_mask (required)
+
+This step includes auxiliar steps (load_scan_numbers and making_masks) as a input for the main step (_make_mask_)
 
 - `scan_list` : List of scan numbers
 - `scans_file` : File containing the scan numbers
@@ -136,8 +146,8 @@ This step includes auxiliar steps (load_scan_numbers and making_masks) as a inpu
 - `mask` : Output mask according to the scan number
 
 
-deconvolve_sun (required)
-^^^^^^^^^^^^^^^^^^^^^^^^^
+13. deconvolve_sun (required)
+
 
 Deconvolve the Sun for each scan MS.
 
@@ -159,9 +169,11 @@ Deconvolve the Sun for each scan MS.
 
 Multiscale is important for this task as the Sun is an extendend source. See more details of the parameters here `WSClean manual <https://wsclean.readthedocs.io/en/latest/>`_ .
 
+Note that the _threshold_ depends on each dataset and can be defined from the Signal-to-noise (SNR) values on the initial dirty image or from other methods.
+The _auto_threshold_ is unset using the keyword _=UNSET_. The parameter _multiscale_ is set to _true_  to allow deconvolution in the multiple scales of the Sun.  
 
-predict_sun_model (required)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+14. predict_sun_model (required)
+
 Predicting the Sun models.
 
 - `ms`
@@ -178,53 +190,56 @@ See more details of the steps in the `WSClean manual <https://wsclean.readthedoc
 
 
 
-quality_control_imaging1 (required)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+15. quality_control_imaging1 (required)
+
 This step is generaly to check the MODEL_DATA column after prediction
 
 - `ms_list`
 
-restore_phase_centre (required)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+16. restore_phase_centre (required)
+
 - `ms_list` : List of MS scans
 - `coords` : The path to the original field coordinates
 - `splitted_ms_dir` : The directory where the MS scans are stored
 
 
-quality_control_imaging2 (required)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+17. quality_control_imaging2 (required)
+
 This step is generaly to check if the rephasing step was successfull.
 
 - `ms_list`
 
 
-add_model_data_columnn (required)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+18. add_model_data_columnn (required)
+
 Add columns to the original MS.
 
 - `ms`
-- `col_names` : Columns to add in the single (original) MS (MODEL_DATA_SUN, CORRECTED_DATA_SUN)
+- `col_names` : Columns to add in the single (original) MS (_MODEL_DATA_SUN_, _CORRECTED_DATA_SUN_)
 - `like-col` : Reference column
 
-data_storage (required)
-^^^^^^^^^^^^^^^^^^^^^^^
+19. data_storage (required)
+
 - `ms`
 - `ms_list` 
-- `copycol` : Column to copy from each MS scan (MODEL_DATA column)
-- `tocol` : Column to copy to in the single (original) MS (MODEL_DATA_SUN)
+- `copycol` : Column to copy from each MS scan (_MODEL_DATA_ column)
+- `tocol` : Column to copy to in the single (original) MS (_MODEL_DATA_SUN_)
 
 
-subtract_sun (required)
-^^^^^^^^^^^^^^^^^^^^^^^
-Subtract the Sun (MODEL_DATA_SUN) from the afected visibilities (CORRECTED_DATA) for each scan.
+20. subtract_sun (required)
+
+Subtract the Sun (_MODEL_DATA_SUN_) from the afected visibilities (_CORRECTED_DATA_) for each scan.
 
 - `ms`
 - `commands` : Command to exectute the subtraction 
-Example: "commands: =LIST("set", "CORRECTED_DATA_SUN=CORRECTED_DATA-MODEL_DATA_SUN")"
+Example:
+.. code-block:: console
 
-image-corrected-data (required)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This steps updates the main field MODEL_DATA after Sun subtraction. This is the refined model used in the "cal_and_peel_sol" step.
+    commands: =LIST("set", "CORRECTED_DATA_SUN=CORRECTED_DATA-MODEL_DATA_SUN")
+
+21. image-corrected-data (required)
+
+This steps updates the main field MODEL_DATA after Sun subtraction. This is the refined model used in the _cal_and_peel_sol_ step.
 
 - `ms` 
 - `padding`
@@ -236,17 +251,17 @@ This steps updates the main field MODEL_DATA after Sun subtraction. This is the 
 - `temp_dir`
 
 
-save-flags-3 (optional)
-^^^^^^^^^^^^^^^^^^^^^^^
+22. save-flags-3 (optional)
+
 Manage flags before peeling
 
 - `ms`
 - `name`
-- `mode`: Save/restore
+- `mode`: save/restore
 
 
-cal_and_peel_sol (required)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+23. cal_and_peel_sol (required)
+
 
 Calibration and peeling of the Sun
 
@@ -288,12 +303,12 @@ Calibration and peeling of the Sun
 - `dE.pinned_directions`: [0] 
 
 
-save-flags-4 (optional)
-^^^^^^^^^^^^^^^^^^^^^^^^
-Manage flags after peeling (same as the step "save-flags-3" )
+24. save-flags-4 (optional)
 
-image (required)
-^^^^^^^^^^^^^^^^
+Manage flags after peeling (same as the step _ ave-flags-3_ )
+
+25. image (required)
+
 Image CORRECTED_RESIDUAL generated in the peeling process. This composes the last imaging cycle of the pipeline.
 
 
